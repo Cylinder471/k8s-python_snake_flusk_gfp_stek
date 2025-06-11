@@ -103,4 +103,4 @@ def random_number(min, max):
 
 
 if __name__ == "__main__":
-	app.run(host = "localhost", port = 2406, debug = True)
+	app.run(host = "0.0.0.0", port = 2406, debug = True)

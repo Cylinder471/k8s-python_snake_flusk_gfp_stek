@@ -1,0 +1,24 @@
+loki:
+  auth_enabled: false
+  storage:
+    type: s3
+    s3:
+      region: us-east-1
+      bucketnames: cylinder-origin-bucket
+      s3forcepathstyle: false
+#      accessKeyId: {}
+#      secretAccessKey: {}
+  schema_config:
+    configs:
+    - from: 2020-05-15
+      store: boltdb-shipper
+      object_store: s3
+      schema: v11
+      index:
+        prefix: loki_index_
+        period: 24h
+serviceAccount:
+  create: true
+  name: loki-sa
+  annotations:
+    eks.amazonaws.com/role-arn: "arn:aws:iam::650251696415:role/loki_s3_role"
